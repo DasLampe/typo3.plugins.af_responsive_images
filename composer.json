@@ -1,0 +1,38 @@
+{
+	"name": "daslampe/af-responsive-images",
+	"type": "typo3-cms-extension",
+	"description" : "Typo3 ViewHelper to generate image srcSet Tag and files",
+	"homepage": "https://github.com/DasLampe/typo3.plugins.af_responsive_images",
+	"authors": [
+		{
+			"name": "Andre Flemming",
+			"email": "daslampe@lano-crew.org",
+			"homepage": "https://daslampe.lano-crew.org",
+			"role": "Developer"
+		}
+	],
+	"license": ["GPL-3.0+"],
+	"keywords": ["TYPO3 CMS", "Responsive Images", "ViewHelper"],
+	"support": {
+		"issues": "https://github.com/DasLampe/typo3.plugins.af_responsive_images/issues"
+	},
+	"version": "1.0.0",
+	"require": {
+		"typo3/cms": "^7.6.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"DasLampe\\AfResponsiveImages\\": "Classes/"
+		}
+	},
+	"replace": {
+		"daslampe/af-responsive-images": "self.version",
+		"af_responsive_images": "self.version"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev",
+			"dev-development": "1.0.x-dev"
+		}
+	}
+}

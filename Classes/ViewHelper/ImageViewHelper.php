@@ -26,7 +26,7 @@
 
 namespace DasLampe\AfResponsiveImages\ViewHelper;
 
-
+use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 
@@ -56,7 +56,7 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
     protected $imageService;
 
     /**
-     * @param File $image
+     * @param FileReference|File $image
      * @param array $srcSet
      * @param int $width
      * @param string $alt
@@ -64,13 +64,21 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
      * @return string
      */
     public function render(
-        File $image,
+        $image,
         array $srcSet = array('320' => '320', '480' => '480', '600' => '600', '800' => '800'),
         $width = 0,
         $alt = '',
         $title = ''
     ) {
-        $this->setFile($image);
+        if(is_callable(array($image, 'getOriginalResource'))) {
+            $image = $image->getOriginalResource();
+        }
+
+        if(!($image instanceof File || $image instanceof FileReference)) {
+            throw new \UnexpectedValueException('Supplied file object type ' . get_class($image) . ' must be File or FileReference.', 1519341109);
+        }
+
+        $this->setFile($image->getOriginalFile());
         $this->setAlt($alt);
         $this->setTitle($title);
 

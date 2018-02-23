@@ -16,7 +16,7 @@
 	"support": {
 		"issues": "https://github.com/DasLampe/typo3.plugins.af_responsive_images/issues"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"require": {
 		"typo3/cms": "^7.6.0"
 	},
